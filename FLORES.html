@@ -6,53 +6,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>FLORES</title>
+    <title>FLORES PARA CRISTELITA</title>
     <style>
-        /* Estilos para el mensaje de Cristelita */
+        /* Forzado de color rojo y mensaje superior */
+        :root { --color-ans: #ff0000 !important; }
+        .flower__leaf { background-image: linear-gradient(to top, #ff0000, #ff4d4d, #1a233a) !important; }
+        .flower__white-circle { background-color: #ffcccc !important; }
+        .flower__light { background-color: #ff0000 !important; }
+
         .mensaje-cristelita {
             position: absolute;
-            top: 10%;
+            top: 5%;
             width: 100%;
             text-align: center;
             color: #ff4d4d;
             font-family: 'Arial', sans-serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
+            font-size: 1.5rem;
             z-index: 100;
-            animation: fadeIn 3s ease-in;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        /* SOBREESCRITURA PARA FLORES ROJAS */
-        /* Cambiamos las variables de color del proyecto original */
-        :root {
-            --color-ans: #ff0000 !important; /* Rojo principal */
-            --color-glass: #ff3333 !important;
+        /* DISEÑO DEL BOTÓN Y MODAL */
+        .btn-sorpresa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 25px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 200;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
         }
 
-        /* Forzamos el color rojo en los pétalos */
-        .flower__leaf {
-            background-image: linear-gradient(to top, #ff0000, #ff4d4d, #1a233a) !important;
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 15, 15, 0.98);
+            padding: 30px;
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            z-index: 300;
+            text-align: center;
+            color: white;
         }
 
-        .flower__white-circle {
-            background-color: #ffcccc !important; /* Centro rosado suave */
+        .modal input {
+            padding: 10px; width: 80px; text-align: center;
+            font-size: 1.2rem; margin: 15px 0; border-radius: 5px; border: none;
         }
 
-        .flower__light {
-            background-color: #ff0000 !important;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        #mensaje-secreto {
+            display: none; color: #ff4d4d; font-weight: bold; margin-top: 15px;
         }
     </style>
 </head>
 
 <body class="container">
     <div class="mensaje-cristelita">
-        ¡Que pases un feliz 14 de febrero Cristelita! ❤️
+        ¡Que pases un feliz 14 de febrero Cristelita! :)
+    </div>
+
+    <button class="btn-sorpresa" onclick="abrirModal()">🎁 Sorpresa</button>
+
+    <div id="miModal" class="modal">
+        <h3>Código Secreto</h3>
+        <p>dia de nuestro aniversario y mi cumpleaños, ambos llevan 0:</p>
+        <input type="password" id="codigoInput" maxlength="4" placeholder="0000">
+        <button style="display:block; margin:auto; padding:10px 20px; background:#ff0000; color:white; border:none; border-radius:5px; cursor:pointer;" onclick="verificarCodigo()">Desbloquear</button>
+        <div id="mensaje-secreto">
+            Hola princesita, como estas, sabes para esta fecha en especifico, pense en hacer algo distinto, o bueno esto es algo distinto a lo que tenia pensado, te extraño amor mio aunque nose si llegues a leer esto
+            todo a sido complicado,pero valdra la pena creeme, ya hace 1 año tomaste el avion que no pude evitar pero falta 1 año para que regreses, y creeme, yo me voy a encargar de que regreses, si bien me comentaste que
+            cambiaste, y es algo normal, nose si recuerdes que una vez me dijiste que esto podria pasar, y nose si recuerdas la frase que siempre te decia, quiero enamorarte cada dia mas, porque tu logras eso conmigo, si supieras
+            cuantas cartas te e escrito, que hasta paresco naufrago escrbiendo cartas, aunque de los dos, quien escribe mas bonito eres tú, no hay dia que no piense en ti, y si no me crees preguntale a mi conciencia o mirame
+            a los ojos cuando te lo diga, para que veas que no te miento, no quiero hacerte llorar con esto como yo lo estoy ahorita redactandolo, te quiero, te amo, te extraño. Nose si leas esto, y no sabria como 
+            decirte para comprobarlo asi que me tocara confiar en la suerte, una suerte que me permitio haberme cruzado en tu camino, y le estoy agradecido eternamente, y una suerte que lograra que vuelvas, en este dia especial
+            quiero decirte que, como dice una cancion que te dedique en su momento, haber si la recuerdas: Que a mi me gustas tal como eres, a mi me gustas tal como estas, es la verdad, asi, sin maquillar. <br>           
+        </div>
     </div>
 
     <div class="night"></div>
@@ -64,7 +100,6 @@
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-  
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -73,7 +108,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -92,7 +126,6 @@
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-  
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -101,7 +134,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -118,7 +150,6 @@
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-  
           <div class="flower__light flower__light--1"></div>
           <div class="flower__light flower__light--2"></div>
           <div class="flower__light flower__light--3"></div>
@@ -127,7 +158,6 @@
           <div class="flower__light flower__light--6"></div>
           <div class="flower__light flower__light--7"></div>
           <div class="flower__light flower__light--8"></div>
-  
         </div>
         <div class="flower__line">
           <div class="flower__line__leaf flower__line__leaf--1"></div>
@@ -136,14 +166,59 @@
           <div class="flower__line__leaf flower__line__leaf--4"></div>
         </div>
       </div>
-  
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--1">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--2">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
       <div class="grow-ans" style="--d:1.2s">
         <div class="flower__g-long">
           <div class="flower__g-long__top"></div>
           <div class="flower__g-long__bottom"></div>
         </div>
       </div>
-      </div>
+    </div>
+
+    <script>
+        function abrirModal() { document.getElementById('miModal').style.display = 'block'; }
+        function verificarCodigo() {
+            const pin = document.getElementById('codigoInput').value;
+            if (pin === "0606") { // CAMBIA AQUÍ TU CÓDIGO
+                document.getElementById('mensaje-secreto').style.display = 'block';
+                document.getElementById('codigoInput').style.display = 'none';
+                document.querySelector('#miModal button').style.display = 'none';
+                document.querySelector('#miModal h3').innerText = " Para ti ";
+            } else { alert("Código incorrecto"); }
+        }
+    </script>
     <script src="main.js"></script>
-  </body>
+</body>
 </html>
