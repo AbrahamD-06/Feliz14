@@ -8,57 +8,52 @@
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <title>FLORES PARA CRISTELITA</title>
     <style>
+        /* Forzado de color rojo y mensaje superior */
         :root { --color-ans: #ff0000 !important; }
         .flower__leaf { background-image: linear-gradient(to top, #ff0000, #ff4d4d, #1a233a) !important; }
         .flower__white-circle { background-color: #ffcccc !important; }
         .flower__light { background-color: #ff0000 !important; }
 
-        /* Ajuste de escala para que no se vea vacío en celular */
-        @media screen and (max-width: 600px) {
-            .flowers {
-                transform: scale(1.4); /* Aumenta el tamaño de la animación */
-                transform-origin: bottom center;
-            }
+        /* Ajuste para que la animación se vea grande en celular */
+        .flowers {
+            transform: scale(1.5); /* Aumentamos el tamaño de la animación original */
+            transform-origin: bottom center;
+            z-index: 1;
         }
 
         .mensaje-cristelita {
             position: absolute;
-            top: 8%;
-            width: 90%;
-            left: 5%;
+            top: 12%; /* Bajamos un poco para que no choque con el botón */
+            width: 100%;
             text-align: center;
             color: #ff4d4d;
             font-family: 'Arial', sans-serif;
-            font-size: 1.8rem; /* Letras más grandes */
+            font-size: 2.2rem; /* Letras mucho más grandes para celular */
+            font-weight: bold;
             z-index: 100;
-            text-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+            padding: 0 15px;
+            box-sizing: border-box;
         }
 
-        /* BOTÓN VISIBLE Y CENTRADO ABAJO */
+        /* BOTÓN EN LA ESQUINA SUPERIOR DERECHA */
         .btn-sorpresa {
             position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%); /* Lo centra horizontalmente */
-            padding: 15px 35px;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
             background: #ff0000;
             color: white;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             z-index: 9999;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
-            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-        }
-
+        /* MODAL Y CARTA */
         .modal {
             display: none;
             position: fixed;
@@ -73,15 +68,22 @@
             text-align: center;
             color: white;
             width: 85%;
-            max-height: 85vh;
+            max-height: 80vh;
             overflow-y: auto;
         }
 
+        .modal input {
+            padding: 12px; width: 100px; text-align: center;
+            font-size: 1.5rem; margin: 15px 0; border-radius: 8px; border: none;
+        }
+
         #mensaje-secreto {
-            display: none;
-            font-size: 1.1rem;
+            display: none; 
+            color: #ffffff; 
+            font-weight: normal; 
+            margin-top: 15px;
+            font-size: 1.2rem; /* Texto de la carta más grande */
             line-height: 1.6;
-            margin-top: 20px;
             text-align: justify;
         }
     </style>
@@ -92,33 +94,149 @@
         ¡Que pases un feliz 14 de febrero Cristelita! ❤️
     </div>
 
-    <button class="btn-sorpresa" onclick="abrirModal()">🎁 TOCA AQUÍ</button>
+    <button class="btn-sorpresa" onclick="abrirModal()">🎁 Sorpresa</button>
 
     <div id="miModal" class="modal">
-        <h3 style="color: #ff4d4d; font-size: 1.5rem;">Código Secreto</h3>
-        <p>Nuestro aniversario y mi cumple:</p>
-        <input type="number" id="codigoInput" pattern="\d*" inputmode="numeric" style="padding:15px; width:120px; font-size:1.5rem; text-align:center; margin-bottom:20px; border-radius:10px; border:none;" placeholder="0000">
-        <button style="display:block; margin:auto; padding:15px 30px; background:#ff0000; color:white; border:none; border-radius:10px; font-weight:bold; font-size:1.1rem;" onclick="verificarCodigo()">Desbloquear</button>
-        
+        <h3>Código Secreto</h3>
+        <p>día de nuestro aniversario y mi cumpleaños, ambos llevan 0:</p>
+        <input type="password" id="codigoInput" maxlength="4" placeholder="0000">
+        <button style="display:block; margin:auto; padding:12px 25px; background:#ff0000; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold;" onclick="verificarCodigo()">Desbloquear</button>
         <div id="mensaje-secreto">
-            Hola princesita... [Tu mensaje completo aquí] ❤️
+            Hola princesita, como estas, sabes para esta fecha en especifico, pense en hacer algo distinto, o bueno esto es algo distinto a lo que tenia pensado, te extraño amor mio aunque nose si llegues a leer esto
+            todo a sido complicado,pero valdra la pena creeme, ya hace 1 año tomaste el avion que no pude evitar pero falta 1 año para que regreses, y creeme, yo me voy a encargar de que regreses, si bien me comentaste que
+            cambiaste, y es algo normal, nose si recuerdes que una vez me dijiste que esto podria pasar, y nose si recuerdas la frase que siempre te decia, quiero enamorarte cada dia mas, porque tu logras eso conmigo, si supieras
+            cuantas cartas te e escrito, que hasta paresco naufrago escrbiendo cartas, aunque de los dos, quien escribe mas bonito eres tú, no hay dia que no piense en ti, y si no me crees preguntale a mi conciencia o mirame
+            a los ojos cuando te lo diga, para que veas que no te miento, no quiero hacerte llorar con esto como yo lo estoy ahorita redactandolo, te quiero, te amo, te extraño. Nose si leas esto, y no sabria como 
+            decirte para comprobarlo asi que me tocara confiar en la suerte, una suerte que me permitio haberme cruzado en tu camino, y le estoy agradecido eternamente, y una suerte que lograra que vuelvas, en este dia especial
+            quiero decirte que, como dice una cancion que te dedique en su momento, haber si la recuerdas: Que a mi me gustas tal como eres, a mi me gustas tal como estas, es la verdad, asi, sin maquillar. <br>           
         </div>
     </div>
 
     <div class="night"></div>
     <div class="flowers">
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
         </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+          <div class="flower__line__leaf flower__line__leaf--5"></div>
+          <div class="flower__line__leaf flower__line__leaf--6"></div>
+        </div>
+      </div>
+  
+      <div class="flower flower--2">
+        <div class="flower__leafs flower__leafs--2">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+  
+      <div class="flower flower--3">
+        <div class="flower__leafs flower__leafs--3">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--1">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--2">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:1.2s">
+        <div class="flower__g-long">
+          <div class="flower__g-long__top"></div>
+          <div class="flower__g-long__bottom"></div>
+        </div>
+      </div>
+    </div>
 
     <script>
         function abrirModal() { document.getElementById('miModal').style.display = 'block'; }
-        
         function verificarCodigo() {
             const pin = document.getElementById('codigoInput').value;
-            if (pin === "0606") { 
+            if (pin === "0606") {
                 document.getElementById('mensaje-secreto').style.display = 'block';
                 document.getElementById('codigoInput').style.display = 'none';
                 document.querySelector('#miModal button').style.display = 'none';
-                document.querySelector('#miModal h3').innerText = "❤️ Para ti ❤️";
+                document.querySelector('#miModal h3').innerText = " Para ti ";
             } else { alert("Código incorrecto"); }
         }
     </script>
